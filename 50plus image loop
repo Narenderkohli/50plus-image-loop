@@ -1,0 +1,11 @@
+{% assign pro_images = product.metafields.custom.images.value %}
+
+                {% paginate pro_images by 60 %}
+                  {% for item in pro_images %}
+                    <img src="{{ item | img_url: 'small' }}">
+                  {% endfor %}
+
+                  {%- if paginate.pages > 1 -%}
+                    {% render 'pagination', paginate: paginate, anchor: '' %}
+                  {%- endif -%}
+                {% endpaginate %}
